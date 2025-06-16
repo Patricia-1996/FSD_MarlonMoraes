@@ -72,7 +72,7 @@ module NanoCPU (
    endgenerate
 
     assign addReg   =  (EA == LD) ? IR[1:0] : IR[9:8];        // completar - atividade 1
-   assign muxRegIn =  dataR;          // completar - atividade 1
+    assign muxRegIn = (EA == LD) ? dataR : out;          // completar - atividade 1
 
    assign RS1 = reg_bank[IR[5:4]];    // reg bank output multiplexers 
    assign RS2 = reg_bank[IR[1:0]];
