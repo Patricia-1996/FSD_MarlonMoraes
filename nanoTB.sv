@@ -21,7 +21,9 @@ module nanoCPU_TB;
    memory_array_t memory = '{
        0: 'h01E0,   // R0 = PMEM[30]
        1: 'h01F1,   // R1 = PMEM[31]
-       2: 'hF000,   // FIM
+     2: 'h0202,   // R2 = PMEM[32]
+     3: 'h0213, // R3 = PMEM[33]
+     4: 'hf000, //FIM
       30: 'h1111,
       31: 'h2222,
      default: 'h0000
