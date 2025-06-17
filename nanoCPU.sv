@@ -93,10 +93,17 @@ module NanoCPU (
    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    // control block  - manages the execution of instructions
    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+//iREAD, iWRITE, iJMP, iBRANCH, iXOR, iSUB, iADD, iLESS, iEND
    always_comb begin               // decode the current instruction
         case (IR[15:12])           // completar - atividade 2
             4'h0: inst = iREAD;
+            4'h1: inst = iWRITE;
+            4'h2: inst = iJMP;
+            4'h3: inst = iBRANCH;
+            4'h4: inst = iXOR;
+            4'h5: inst = iSUB;
+            4'h6: inst = iADD;
+            4'h7: inst = iLESS;
             default: inst = iEND;
         endcase
     end
