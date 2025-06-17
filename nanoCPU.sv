@@ -80,6 +80,10 @@ module NanoCPU (
    // arithmetic and logic unit        // completar - atividade 4
    always_comb begin
         unique case (inst)
+            iWRITE : outalu = RS2
+            iXOR  : outalu = RS1 ^ RS2;
+            iSUB  : outalu = RS1 - RS2;
+            iLESS  :  outalu = (RS1 < RS2) ? 'h0001 : 'h0000;
             default: outalu = RS1 + RS2;
         endcase
     end
