@@ -112,6 +112,7 @@ module NanoCPU (
     assign wReg = (EA inside {LD, ALU});
     assign wIR  = (EA == FETCH);
 
+    //IDLE, FETCH, EXEC, LD, WRITE, ALU, JMP, BRANCH, fim
     always_ff @(posedge ck or posedge rst) begin    
       if (rst)
         EA <= IDLE;
@@ -121,7 +122,10 @@ module NanoCPU (
             FETCH:   EA <= EXEC;
             EXEC:    unique case (inst)          // completar - atividade 3
                          iEND:     EA <= fim;
+                        iWRITE: EA <= WRITE;
                          iREAD:    EA <= LD;
+                        iJMP:     EA <= JMP;
+                        iBRANCH: EA <= BRANCH;
                          default:  EA <= ALU;
                      endcase
             fim:     EA <= fim;
