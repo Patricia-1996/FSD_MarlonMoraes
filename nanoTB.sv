@@ -19,28 +19,17 @@ module nanoCPU_TB;
   typedef logic [15:0] memory_array_t [0:255];
 
    memory_array_t memory = '{
-       0: 'h01E0,   // R0 = PMEM[30]
-       1: 'h01F1,   // R1 = PMEM[31]
-     2: 'h0202,   // R2 = PMEM[32]
-     3: 'h0213, // R3 = PMEM[33]
-     4: 'h6003,// ADD R0 <- R0 + R3
-     5: 'h5101, // SUB R1 <- R0 - R1
-     6: 'h4300, // XOR R3 <- R0 ^ R0
-     7: 'h7210,     //LESS R2 <- R1 < R0
-     8: 'h10F0, // mem[15] = R0 = 5555
-     9: 'h1101, //mem[16] = R1 = 3333
-     10: 'h1112, //mem[17] = R2 = 0001
-     11: 'h3FF2,      //BRANCH to 255 (hFF) if R2=1
-     20:'h8000, // INC R0 <- R0 +1
-     21:'h8110, // INC R1 <- R1 +1
-     22:'h9220, // DEC R2 <- R2 -1
-     23:'h9330, //DEC R3 <- R3 -1
-     24: 'hf000,  //FIM
-      30: 'h1111,
-      31: 'h2222,
-      32: 'h3333,
-      33: 'h4444,
-     255: 'h2140,//unconditional jump to 20(h14)
+       0: 'h4000,   // XOR R0, R0, R0 -> i =0
+       1: 'h4111,   // XOR R1, R1, R1 -> a=0
+     2: 'h0093,   // READ R3 <- mem[9]  -> constante 10
+     3: 'h6110, // ADD R1 = R1 + R0
+     4: 'h8000,// INC R0
+     5: 'h7203, // LESS R2 =  R0 < R3
+     6: 'h3032, // BRANCH to 3 if R2 ==1
+     7: 'h10A1,     //WRITE R1 -> mem[10]
+     8: 'hF000, // END
+     9: 'h000A, // constante 10
+     10: 'h0000, //destino da escrita (a)
      default: 'h0000
    };
 
