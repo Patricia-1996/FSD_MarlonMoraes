@@ -27,7 +27,7 @@ module nanoCPU_TB;
      4: 'h8211,// INC R1 -> F1 = 1
 
      //Loop
-     5: 'h7203, //LESS R2 = R0 < R3
+     5: 'h4331, //ADD R3 = R1 + R2 -> c= a + b
      6: 'h3032, // BRANCH to 3 if R2 ==1
      7: 'h10A1,     //WRITE R1 -> mem[10]
      8: 'h2140, // JMP to 20, vai ativ 8
