@@ -30,11 +30,13 @@ module nanoCPU_TB;
      8: 'h10F0, // mem[15] = R0 = 5555
      9: 'h1101, //mem[16] = R1 = 3333
      10: 'h1112, //mem[17] = R2 = 0001
-     11: 'hf000,      //FIM
+     11: 'h3FF2,      //BRANCH to 255 (hFF) if R2=1
+     20: 'hf000,  //FIM
       30: 'h1111,
       31: 'h2222,
       32: 'h3333,
       33: 'h4444,
+     255: 'h2140,//unconditional jump to 20(h14)
      default: 'h0000
    };
 
