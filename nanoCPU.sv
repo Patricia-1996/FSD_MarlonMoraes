@@ -92,7 +92,9 @@ module NanoCPU (
    Reg16bit R_IR (.ck(ck), .rst(rst), .we(wIR), .D(dataR), .Q(IR));
    Reg16bit R_PC (.ck(ck), .rst(rst), .we(wPC), .D(muxPC), .Q(PC));
 
-   assign  muxPC =  PC + 1;            // completar - atividade 7
+    assign  muxPC =  (EA == JMP) ? {8 'h00, IR[11:4]}:
+        (EA == BRANCH && RS2[0]) ? {8 'h00, IR[11:4]}:
+        PC + 1;            // completar - atividade 7
 
    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    // control block  - manages the execution of instructions
