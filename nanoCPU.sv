@@ -60,7 +60,7 @@ module NanoCPU (
    assign dataW   = outalu;
    assign address = (EA==FETCH) ? PC[7:0] : IR[11:4];
    assign ce      = 1;
-   assign we      = 0;               // completar -atividade 6
+    assign we      =  (EA == WRITE);               // completar -atividade 6
    
     // register bank - 4 general purpose registers
    genvar i;
