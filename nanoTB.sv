@@ -30,6 +30,8 @@ module nanoCPU_TB;
      8: 'hf000,      //FIM
       30: 'h1111,
       31: 'h2222,
+      32: 'h3333,
+      33: 'h4444,
      default: 'h0000
    };
 
