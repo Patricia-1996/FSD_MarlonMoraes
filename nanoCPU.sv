@@ -36,7 +36,7 @@ module NanoCPU (
 );
     // instructions executed by the nanoCPU
     typedef enum logic [3:0] {
-        iREAD, iWRITE, iJMP, iBRANCH, iXOR, iSUB, iADD, iLESS, iEND
+        iREAD, iWRITE, iJMP, iBRANCH, iXOR, iSUB, iADD, iLESS, iEND ,iINC, iDEC,
     } instType;
     instType inst;
 
@@ -84,6 +84,8 @@ module NanoCPU (
             iXOR  : outalu = RS1 ^ RS2;
             iSUB  : outalu = RS1 - RS2;
             iLESS  :  outalu = (RS1 < RS2) ? 'h0001 : 'h0000;
+            iINC : outalu = RS1 + 1;
+            iDEC  : outalu =  RS1 - 1;
             default: outalu = RS1 + RS2;
         endcase
     end
@@ -110,6 +112,8 @@ module NanoCPU (
             4'h5: inst = iSUB;
             4'h6: inst = iADD;
             4'h7: inst = iLESS;
+            4'h8: inst = iINC;
+            4'h9: inst = iDEC;
             default: inst = iEND;
         endcase
     end
