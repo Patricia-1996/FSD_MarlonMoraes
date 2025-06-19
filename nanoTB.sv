@@ -57,6 +57,7 @@ module nanoCPU_TB;
     ck = 1'b0;
     rst = 1'b1;
     #2 rst = 1'b0;
+    #300 $finish; //ajustei tempo final 
   end
 
 endmodule
