@@ -23,8 +23,8 @@ module nanoCPU_TB;
        1: 'h01F1,   // R1 = PMEM[31]
      2: 'h0202,   // R2 = PMEM[32]
      3: 'h0213, // R3 = PMEM[33]
-     4: 'h6030,// ADD R0 <- R0 + R3
-     5: 'h5110, // SUB R1 <- R0 - R1
+     4: 'h6003,// ADD R0 <- R0 + R3
+     5: 'h5101, // SUB R1 <- R0 - R1
      6: 'h4300, // XOR R3 <- R0 ^ R0
      7: 'h7210,     //LESS R2 <- R1 < R0
      8: 'hf000,      //FIM
