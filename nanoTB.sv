@@ -20,10 +20,10 @@ module nanoCPU_TB;
 
    memory_array_t memory = '{
      //ativ 9 loop de somas
-     0: 'h4000,   // XOR R0, R0, R0
-     1: 'h4111,   // XOR R1, R1, R1
-     2: 'h0093,   // Read R3 <- mem[9]
-     3: 'h6110, // ADD R1 = R1 + R0
+     0: 'h4000,   // XOR R0, R0, R0 -> i=0
+     1: 'h4111,   // XOR R1, R1, R1 -> a=0
+     2: 'h4222,   // XOR R2, R2, R2 -> b =0
+     3: 'h0093, // ADD R1 = R1 + R0
      4: 'h8000,// INC R0
      5: 'h7203, //LESS R2 = R0 < R3
      6: 'h3032, // BRANCH to 3 if R2 ==1
