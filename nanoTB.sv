@@ -28,8 +28,8 @@ module nanoCPU_TB;
 
      //Loop
      5: 'h4331, //ADD R3 = R1 + R2 -> c= a + b
-     6: 'h3032, // BRANCH to 3 if R2 ==1
-     7: 'h10A1,     //WRITE R1 -> mem[10]
+     6: 'h2010, // WRITE R3 -> mem[16+i]
+     7: 'h6221,     //ADD R2 = R1 + 0 -> b = a
      8: 'h2140, // JMP to 20, vai ativ 8
      9: 'h000A, //constante 10
      10: 'h0000, //resultado final será escrito aqui mem[10]
