@@ -19,12 +19,14 @@ module nanoCPU_TB;
   typedef logic [15:0] memory_array_t [0:255];
 
    memory_array_t memory = '{
-     //ativ 9 loop de somas
+     //Atividade 10 Fibonacci 
      0: 'h4000,   // XOR R0, R0, R0 -> i=0
      1: 'h4111,   // XOR R1, R1, R1 -> a=0
      2: 'h4222,   // XOR R2, R2, R2 -> b =0
-     3: 'h0093, // ADD R1 = R1 + R0
-     4: 'h8000,// INC R0
+     3: 'h0093, // READ R3 <- mem[9] -> 10 (limite)
+     4: 'h8211,// INC R1 -> F1 = 1
+
+     //Loop
      5: 'h7203, //LESS R2 = R0 < R3
      6: 'h3032, // BRANCH to 3 if R2 ==1
      7: 'h10A1,     //WRITE R1 -> mem[10]
