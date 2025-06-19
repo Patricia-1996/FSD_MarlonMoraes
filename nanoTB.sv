@@ -19,18 +19,25 @@ module nanoCPU_TB;
   typedef logic [15:0] memory_array_t [0:255];
 
    memory_array_t memory = '{
-       0: 'h4000,   // XOR R0, R0, R0 -> i =0
-       1: 'h4111,   // XOR R1, R1, R1 -> a=0
-     2: 'h0093,   // READ R3 <- mem[9]  -> constante 10
+     //ativ 9 loop de somas
+     0: 'h4000,   // XOR R0, R0, R0
+     1: 'h4111,   // XOR R1, R1, R1
+     2: 'h0093,   // Read R3 <- mem[9]
      3: 'h6110, // ADD R1 = R1 + R0
      4: 'h8000,// INC R0
-     5: 'h7203, // LESS R2 =  R0 < R3
+     5: 'h7203, //LESS R2 = R0 < R3
      6: 'h3032, // BRANCH to 3 if R2 ==1
      7: 'h10A1,     //WRITE R1 -> mem[10]
-     8: 'hF000, // END
-     9: 'h000A, // constante 10
-     10: 'h0000, //destino da escrita (a)
-     default: 'h0000
+     8: 'h2140, // JMP to 20, vai ativ 8
+     9: 'h000A, constante 10
+     10: 'h0000, //resultado final será escrito aqui mem[10]
+
+     //Atividade 8 - INC/DEC separadamente 
+     20:'h8000,  //INC R0 = R0 +1
+     21: 'h8110, // INC R1 = R1 +1
+     22: 'h9220, //DEC R2 = R2 -1
+     23: 'h9330, //DEC R3 = R3 -1
+      default: 'h0000
    };
 
   always #1 ck = ~ck;
