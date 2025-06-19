@@ -33,6 +33,8 @@ module nanoCPU_TB;
      8: 'h6113, // ADD R1= R3 +0 -> a= c
      9: 'h8000, //INC R0-> i++
      10: 'h7420, //LESS R2  = i< 10
+     11: 'h30A5, // BRANCH to 5 if R2 == 1
+     12: 'hF000, //END 
 
      //Atividade 8 - INC/DEC separadamente 
      20:'h8000,  //INC R0 = R0 +1
