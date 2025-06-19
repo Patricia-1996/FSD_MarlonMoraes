@@ -36,11 +36,8 @@ module nanoCPU_TB;
      11: 'h30A5, // BRANCH to 5 if R2 == 1
      12: 'hF000, //END 
 
-     //Atividade 8 - INC/DEC separadamente 
-     20:'h8000,  //INC R0 = R0 +1
-     21: 'h8110, // INC R1 = R1 +1
-     22: 'h9220, //DEC R2 = R2 -1
-     23: 'h9330, //DEC R3 = R3 -1
+     //Constante
+     9: 'h000A, //valor 10
       default: 'h0000
    };
 
