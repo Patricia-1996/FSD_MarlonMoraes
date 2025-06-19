@@ -32,7 +32,7 @@ module nanoCPU_TB;
      7: 'h6221,     //ADD R2 = R1 + 0 -> b = a
      8: 'h6113, // ADD R1= R3 +0 -> a= c
      9: 'h8000, //INC R0-> i++
-     10: 'h0000, //resultado final será escrito aqui mem[10]
+     10: 'h7420, //LESS R2  = i< 10
 
      //Atividade 8 - INC/DEC separadamente 
      20:'h8000,  //INC R0 = R0 +1
