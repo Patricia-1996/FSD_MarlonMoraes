@@ -23,7 +23,7 @@ module nanoCPU_TB;
      0: 'h4000,   // XOR R0, R0, R0 -> i=0
      1: 'h4111,   // XOR R1, R1, R1 -> a=0
      2: 'h4222,   // XOR R2, R2, R2 -> b =0
-     3: 'h0093, // READ R3 <- mem[9] -> 10 (limite)
+     3: 'h01E3, // READ R3 <- mem[30] -> 10 (limite)
      4: 'h8211,// INC R1 -> F1 = 1
 
      //Loop
