@@ -27,13 +27,13 @@ module nanoCPU_TB;
      4: 'h8211,// INC R1 -> a = 1
 
      //Loop
-     5: 'h4331, //ADD R3 = R1 + R2 -> c= a + b
-     6: 'h20F3, // WRITE R3 -> mem[15+R0]
+     5: 'h6012, //ADD R0 = R1 + R2 -> c= a + b (uso temporário R0)
+     6: 'h2000, // WRITE R0 -> mem[15+i]
      7: 'h6221,     //ADD R2 = R1 + 0 -> b = a
-     8: 'h6113, // ADD R1= R3 +0 -> a= c
-     9: 'h8000, //INC R0-> i++
-     10: 'h7420, //LESS R2  = i< limit
-     11: 'h30A5, // BRANCH to 5 if R2 == 1
+     8: 'h6110, // ADD R1= R0 +0 -> a= c
+     9: 'h8000, //INC R0 (i++)
+     10: 'h7430, //LESS R3  = i< limit
+     11: 'h30A5, // BRANCH to 5 if R3 == 1
      12: 'hF000, //END 
 
      //Constante
