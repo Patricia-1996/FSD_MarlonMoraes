@@ -37,7 +37,20 @@ module nanoCPU_TB;
      12: 'hF000, //END 
 
      //Constante
-     9: 'h000A, //valor 10
+     30: 'h000A, //valor 10
+
+     //Reserva de espaço para a saída
+     15:'h0000,
+     16:'h0000,
+     17:'h0000,
+     18:'h0000,
+     19:'h0000,
+     20:'h0000,
+     21:'h0000,
+     22:'h0000,
+     23:'h0000,
+     24:'h0000,
+     
       default: 'h0000
    };
 
