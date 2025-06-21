@@ -24,11 +24,11 @@ module nanoCPU_TB;
      1: 'h4111,   // XOR R1, R1, R1 -> a=0
      2: 'h4222,   // XOR R2, R2, R2 -> b =0
      3: 'h01E3, // READ R3 <- mem[30] -> 10 (limite)
-     4: 'h8211,// INC R1 -> F1 = 1
+     4: 'h8211,// INC R1 -> a = 1
 
      //Loop
      5: 'h4331, //ADD R3 = R1 + R2 -> c= a + b
-     6: 'h2010, // WRITE R3 -> mem[16+i]
+     6: 'h20F3, // WRITE R3 -> mem[15+R0]
      7: 'h6221,     //ADD R2 = R1 + 0 -> b = a
      8: 'h6113, // ADD R1= R3 +0 -> a= c
      9: 'h8000, //INC R0-> i++
