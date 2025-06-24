@@ -19,36 +19,20 @@ module nanoCPU_TB;
   typedef logic [15:0] memory_array_t [0:255];
 
    memory_array_t memory = '{
-     //Atividade 10 Fibonacci 
-     0: 'h4000,   // XOR R0, R0, R0 -> i=0
-     1: 'h4111,   // XOR R1, R1, R1 -> a=0
-     2: 'h4222,   // XOR R2, R2, R2 -> b =0
-     3: 'h01E3, // READ R3 <- mem[30] -> 10 (limite)
-     4: 'h8211,// INC R1 -> a = 1
-
-     //Loop
-     5: 'h6012, //ADD R0 = R1 + R2 -> c= a + b (uso temporário R0)
-     6: 'h2000, // WRITE R0 -> mem[15+i]
-     7: 'h6221,     //ADD R2 = R1 + 0 -> b = a
-     8: 'h6110, // ADD R1= R0 +0 -> a= c
-     9: 'h8000, //INC R0 (i++)
-     10: 'h7430, //LESS R3  = i< limit
-     11: 'h30A5, // BRANCH to 5 if R3 == 1
-     12: 'hF000, //END 
-
-     //Constante
-     30: 'h0006, //valor 10
-
-     //Reserva de espaço para a saída
-     15:'h0000,
-     16:'h0000,
-     17:'h0000,
-     18:'h0000,
-     19:'h0000,
-     20:'h000E,
-     21:'h0000,
-     
-      default: 'h0000
+       0: 'h01E0,   // R0 = PMEM[30]
+       1: 'h01F1,   // R1 = PMEM[31]
+     2: 'h0202,   // R2 = PMEM[32]
+     3: 'h0213, // R3 = PMEM[33]
+     4: 'h6003,// ADD R0 <- R0 + R3
+     5: 'h5101, // SUB R1 <- R0 - R1
+     6: 'h4300, // XOR R3 <- R0 ^ R0
+     7: 'h7210,     //LESS R2 <- R1 < R0
+     8: 'hf000,      //FIM
+      30: 'h1111,
+      31: 'h2222,
+      32: 'h3333,
+      33: 'h4444,
+     default: 'h0000
    };
 
   always #1 ck = ~ck;
@@ -68,7 +52,7 @@ module nanoCPU_TB;
     ck = 1'b0;
     rst = 1'b1;
     #2 rst = 1'b0;
-    #300 $finish; //ajustei tempo final 
+    #500 $finish;
   end
 
 endmodule
