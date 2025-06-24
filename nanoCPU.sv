@@ -1,6 +1,6 @@
 /*
  * 
- * NANO CPU   --------  VERSÃO INCOMPLETA A SER PREENCHIDA PELOS ALUNOS
+ * NANO CPU   --------  VERSAO INCOMPLETA A SER PREENCHIDA PELOS ALUNOS
  * Fernando Gehm Moraes
  * 03/maio/2025
  * 
@@ -36,7 +36,7 @@ module NanoCPU (
 );
     // instructions executed by the nanoCPU
     typedef enum logic [3:0] {
-        iREAD, iWRITE, iJMP, iBRANCH, iXOR, iSUB, iADD, iLESS, iEND ,iINC, iDEC,
+        iREAD, iWRITE, iJMP, iBRANCH, iXOR, iSUB, iADD, iLESS, iEND
     } instType;
     instType inst;
 
@@ -60,7 +60,7 @@ module NanoCPU (
    assign dataW   = outalu;
    assign address = (EA==FETCH) ? PC[7:0] : IR[11:4];
    assign ce      = 1;
-    assign we      =  (EA == WRITE);               // completar -atividade 6
+   assign we      = 0;               // completar -atividade 6
    
     // register bank - 4 general purpose registers
    genvar i;
@@ -72,7 +72,7 @@ module NanoCPU (
    endgenerate
 
     assign addReg   =  (EA == LD) ? IR[1:0] : IR[9:8];        // completar - atividade 1
-    assign muxRegIn = (EA == LD) ? dataR : outula;          // completar - atividade 1
+    assign muxRegIn = (EA == LD) ? dataR : outalu;          // completar - atividade 1
 
    assign RS1 = reg_bank[IR[5:4]];    // reg bank output multiplexers 
    assign RS2 = reg_bank[IR[1:0]];
@@ -80,12 +80,10 @@ module NanoCPU (
    // arithmetic and logic unit        // completar - atividade 4
    always_comb begin
         unique case (inst)
-            iWRITE : outalu = RS2
+            iWRITE : outalu = RS2;
             iXOR  : outalu = RS1 ^ RS2;
             iSUB  : outalu = RS1 - RS2;
             iLESS  :  outalu = (RS1 < RS2) ? 'h0001 : 'h0000;
-            iINC : outalu = RS1 + 1;
-            iDEC  : outalu =  RS1 - 1;
             default: outalu = RS1 + RS2;
         endcase
     end
@@ -94,9 +92,7 @@ module NanoCPU (
    Reg16bit R_IR (.ck(ck), .rst(rst), .we(wIR), .D(dataR), .Q(IR));
    Reg16bit R_PC (.ck(ck), .rst(rst), .we(wPC), .D(muxPC), .Q(PC));
 
-    assign  muxPC =  (EA == JMP) ? {8 'h00, IR[11:4]}:
-        (EA == BRANCH && RS2[0]) ? {8 'h00, IR[11:4]}:
-        PC + 1;            // completar - atividade 7
+   assign  muxPC =  PC + 1;            // completar - atividade 7
 
    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    // control block  - manages the execution of instructions
@@ -112,8 +108,6 @@ module NanoCPU (
             4'h5: inst = iSUB;
             4'h6: inst = iADD;
             4'h7: inst = iLESS;
-            4'h8: inst = iINC;
-            4'h9: inst = iDEC;
             default: inst = iEND;
         endcase
     end
